@@ -1,3 +1,3 @@
-module exampel.local/Test01
+module main
 
 go 1.23.2
