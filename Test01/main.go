@@ -26,7 +26,11 @@ func main() {
 	// Variables()
 	// fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
 
-	Output()
+	//Output()
+}
+
+func DataTypes() {
+
 }
 
 func Output() {
