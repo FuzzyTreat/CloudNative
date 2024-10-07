@@ -7,7 +7,7 @@ import (
 const PI = 3.14 // Untyped constant
 // const PI float32 = 3.14 // Typed constant
 
-// Declare mutipleconstants at once, no need to repeat keyword const and always untyped const
+// Declare mutiple constants at once, no need to repeat keyword const and always untyped const
 // No complaint about un-used constants
 const (
 	A int = 11
@@ -26,7 +26,21 @@ func main() {
 	// Variables()
 	// fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
 
-	Output()
+	//Output()
+
+	DataTypes()
+}
+
+func DataTypes() {
+	var a bool = true
+	var b int = 5
+	var c float32 = 3.14
+	var d string = "Hi!"
+
+	fmt.Println("Boolean: ", a)
+	fmt.Println("Integer: ", b)
+	fmt.Println("Float: ", c)
+	fmt.Println("String: ", d)
 }
 
 func Output() {
