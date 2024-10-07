@@ -7,13 +7,28 @@ import (
 const PI = 3.14 // Untyped constant
 // const PI float32 = 3.14 // Typed constant
 
+// Declare mutipleconstants at once, no need to repeat keyword const and always untyped const
+// No complaint about un-used constants
+const (
+	A int = 11
+	B     = 3.16
+	C     = "Hello there!"
+)
+
 func main() {
-	const LOCAL_PI = 3.15
+	const LOCAL_PI = 3.17 // tied to the current scope
 
 	// This is a comment
 	fmt.Println("Hello World!")
 	/* This is also a comment
 	but on multiple rows */
+
+	// Variables()
+	fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
+}
+
+func Variables() {
+	const LOCAL_PI = 3.15 // tied to the current scope, not the same as in main
 
 	var explicitOne int32 = 1 // Full syntax declaration
 	var typeLessOne = 2       // defaults to OS std byte size, ie int32 on a 32 bit system and int64 on a 64 bit system
@@ -38,6 +53,5 @@ func main() {
 	// Snake case: my_variable_name = "One"
 
 	fmt.Printf("Global Const value: %f\n", PI)
-	fmt.Printf("Local Const value: %f\n", LOCAL_PI)
-
+	fmt.Printf("Func Const value: %f\n", LOCAL_PI)
 }
