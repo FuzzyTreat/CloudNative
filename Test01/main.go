@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"errors"
 	"fmt"
 	"os"
 	"strings"
@@ -31,7 +32,90 @@ func main() {
 
 	//Output()
 	//DataTypes()
-	StringValues()
+	//StringValues()
+
+	Functions()
+}
+
+func Functions() {
+	fmt.Print("\nFunctions\n")
+	fmt.Println()
+	fmt.Println(Add("Sommar ", "2024"))
+
+	fmt.Printf("Vat is: %.2f\n", Vat(10))
+	fmt.Println()
+
+	userInput := []string{"aaa", "bbbbbbb", "cc", "ddd"}
+
+	fmt.Printf("Longest word: %s\n", HittaLangstaOrdet(userInput))
+
+	tax, err := CalculateTaxesOnSalary(20000)
+
+	if err != nil {
+		fmt.Printf("Something went wrong: %s", err.Error())
+	} else {
+		fmt.Printf("\nTax amount: %.2f\n", tax)
+	}
+}
+
+func Add(input1 string, input2 string) string {
+	return input1 + input2
+}
+
+func Vat(sum float64) float64 {
+	return sum * 0.25
+}
+
+func HittaLangstaOrdet(userInputs []string) string {
+	var idxLongest int = 0
+	var previous int = 0
+
+	for idx, _ := range userInputs {
+		if len(userInputs[idx]) > previous {
+			previous = len(userInputs[idx])
+			idxLongest = idx
+		}
+	}
+
+	return userInputs[idxLongest]
+}
+
+func CalculateTaxesOnSalary(salary float64) (tax float64, err error) {
+	switch {
+	case salary >= 30000:
+		{
+			t := salary * 0.33
+
+			tax = t
+			err = nil
+		}
+	case salary < 30000:
+		{
+			t := salary * 0.28
+
+			tax = t
+			err = nil
+		}
+	case salary < 15000:
+		{
+			t := salary * 0.12
+
+			tax = t
+			err = nil
+		}
+	case salary < 0:
+		{
+			tax = 0.0
+			err = errors.New("salary can not be negative")
+		}
+	default:
+		{
+			tax = 0.0
+			err = errors.New("not a valid number for salary")
+		}
+	}
+
+	return
 }
 
 func StringValues() {
