@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 )
 
 const PI = 3.14 // Untyped constant
@@ -27,10 +28,37 @@ func main() {
 	// fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
 
 	//Output()
-	DataTypes()
+	//DataTypes()
+	StringValues()
+}
+
+func StringValues() {
+
+	userStrings := [3]string{}
+	var inputString string
+
+	fmt.Printf("Enter 3 strings. \n")
+
+	for idx, _ := range userStrings {
+		fmt.Printf("Enter string %d: ", idx+1)
+		fmt.Scan(&inputString)
+		userStrings[idx] = inputString
+		fmt.Printf("\n")
+	}
+
+	fmt.Printf("%s %s %s\n", userStrings[0], userStrings[1], userStrings[2])
+
+	firstIdx := strings.Index(C, "t")
+	lastIdx := strings.LastIndex(C, "o")
+
+	fmt.Printf("\n")
+	fmt.Printf("First index of t: %d in %s\n", firstIdx, C)
+	fmt.Printf("Last index of o: %d in %s\n", lastIdx, C)
+
 }
 
 func DataTypes() {
+
 	var stop bool = false
 	var menuChoice int32
 	var accountName string
