@@ -27,10 +27,98 @@ func main() {
 	// fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
 
 	//Output()
+	DataTypes()
 }
 
 func DataTypes() {
+	var stop bool = false
+	var menuChoice int32
+	var accountName string
+	var amount int
 
+	accountList := make(map[string]int)
+
+	for {
+
+		fmt.Println("")
+		fmt.Println("1. Skapa konto")
+		fmt.Println("2. Ta bort konto")
+		fmt.Println("3. Lista alla konton")
+		fmt.Println("4. Visa totalsaldo")
+		fmt.Println("5. Lista all konton och saldonn")
+		fmt.Println("6. Avsluta")
+		fmt.Println("")
+
+		fmt.Scan(&menuChoice)
+
+		switch menuChoice {
+		case 1:
+			{
+				fmt.Println("")
+				fmt.Println("Enter account name: ")
+				fmt.Scan(&accountName)
+				fmt.Println("")
+				fmt.Println("Enter amount: ")
+				fmt.Scan(&amount)
+				fmt.Println("")
+
+				accountList[accountName] = amount
+				stop = false
+			}
+		case 2:
+			{
+				fmt.Println("")
+				fmt.Println("Enter account name: ")
+				fmt.Scan(&accountName)
+				fmt.Println("")
+
+				delete(accountList, accountName)
+				fmt.Println("")
+				fmt.Printf("Account %s has been deleted.\n", accountName)
+				stop = false
+			}
+		case 3:
+			{
+				for key, _ := range accountList {
+					fmt.Printf("Account name: %s.\n", key)
+				}
+
+				stop = false
+			}
+		case 4:
+			{
+				var total int
+
+				for _, value := range accountList {
+					total = total + value
+				}
+
+				fmt.Println("")
+				fmt.Printf("Totalt saldo: %d\n", total)
+
+				stop = false
+			}
+		case 5:
+			{
+				{
+					for key, value := range accountList {
+						fmt.Printf("Account name: %s. Saldo: %d\n", key, value)
+					}
+
+					stop = false
+				}
+			}
+		case 6:
+			{
+				stop = true
+			}
+		default:
+		}
+
+		if stop {
+			break
+		}
+	}
 }
 
 func Output() {
