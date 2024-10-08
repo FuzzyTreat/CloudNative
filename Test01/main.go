@@ -34,7 +34,40 @@ func main() {
 	//DataTypes()
 	//StringValues()
 
-	Functions()
+	// Functions()
+
+	Structs()
+}
+
+func Structs() {
+	type Matratt struct {
+		Name     string
+		Price    float64
+		Type     string
+		Calories int
+	}
+
+	ratter := []Matratt{}
+
+	ratt1 := Matratt{Name: "Rätt 1", Price: 25.00, Type: "Kött", Calories: 1}
+	ratt2 := Matratt{Name: "Rätt 2", Price: 15.00, Type: "Kött", Calories: 2}
+	ratt3 := Matratt{Name: "Rätt 3", Price: 95.00, Type: "Kött", Calories: 3}
+	ratt4 := Matratt{Name: "Rätt 4", Price: 45.00, Type: "Kött", Calories: 4}
+
+	ratter = append(ratter, ratt1, ratt2, ratt3, ratt4)
+
+	fmt.Printf("\nDagens lunch\n")
+	fmt.Println()
+
+	for _, ratt := range ratter {
+		fmt.Printf("Namn: %s\n", ratt.Name)
+		fmt.Printf("Pris: %.2f\n", ratt.Price)
+		fmt.Printf("Typ: %s\n", ratt.Type)
+		fmt.Printf("Kalorier: %d\n", ratt.Calories)
+		fmt.Printf("\n")
+	}
+
+	fmt.Printf("\n")
 }
 
 func Functions() {
