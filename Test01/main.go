@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
 const PI = 3.14 // Untyped constant
@@ -27,10 +30,121 @@ func main() {
 	// fmt.Printf("Main Local Const value: %f\n", LOCAL_PI)
 
 	//Output()
-	DataTypes()
+	//DataTypes()
+	StringValues()
+}
+
+func StringValues() {
+	// String #1
+	userStrings := []string{}
+	var inputString string
+
+	fmt.Printf("Enter 3 strings. \n")
+
+	for i := 0; i < 3; i++ {
+		fmt.Printf("Enter string %d: ", i+1)
+		fmt.Scan(&inputString)
+		userStrings = append(userStrings, inputString)
+		fmt.Printf("\n")
+	}
+
+	output := strings.Join(userStrings, " ")
+	// fmt.Printf("%s %s %s\n", userStrings[0], userStrings[1], userStrings[2])
+	fmt.Println(output)
+
+	// String #2
+	firstIdx := strings.Index(C, "t")
+	lastIdx := strings.LastIndex(C, "o")
+
+	fmt.Printf("\n")
+	fmt.Printf("First index of t: %d in %s\n", firstIdx, C)
+	fmt.Printf("Last index of o: %d in %s\n", lastIdx, C)
+
+	// string #3
+	fullName := "kurt andersson"
+	fmt.Printf("Name before formatting: %s\n", fullName)
+
+	fullName = strings.Replace(fullName, string(fullName[0]), strings.ToUpper(string(fullName[0])), 1)
+	spaceIdx := strings.Index(fullName, " ")
+	fullName = strings.Replace(fullName, string(fullName[spaceIdx+1]), strings.ToUpper(string(fullName[spaceIdx+1])), 1)
+
+	fmt.Printf("Formatted name: %s\n", fullName)
+
+	// string #4
+	exampleString := "Detta är en sträng som du skall ändra"
+	exampleString = strings.ReplaceAll(exampleString, " ", "*")
+	fmt.Printf("Number of stars after replacement: %d\n", strings.Count(exampleString, "*"))
+
+	// string #5
+	fmt.Print("\nStrings #5\n")
+	var email string
+	var isCorrect bool
+	var suffixCount int16 = 0
+
+	fmt.Printf("Enter an email address: ")
+	fmt.Scan(&email)
+	fmt.Println(" ")
+
+	atIdx := strings.Index(email, "@")
+	dotIdx := strings.LastIndex(email, ".")
+
+	if atIdx < 0 || dotIdx < 0 {
+		isCorrect = false
+	} else {
+		for i := dotIdx; dotIdx < len(email)-dotIdx; i++ {
+			suffixCount = suffixCount + 1
+		}
+
+		if suffixCount < 2 {
+			isCorrect = false
+		} else {
+			isCorrect = true
+		}
+	}
+
+	if isCorrect {
+		fmt.Println("You entered a valid email address!")
+	} else {
+		fmt.Println("You entered a invalid email address!")
+	}
+
+	Strings6()
+}
+
+func Strings6() {
+	// string #6
+	var text string
+	var reverseText string
+	fmt.Print("\nStrings #6\n")
+
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		text = scanner.Text()
+
+		if len(text) > 0 {
+			break
+		}
+	}
+
+	for i := len(text); i > 0; i-- {
+		reverseText += string(text[i-1])
+	}
+
+	text = strings.ToLower(strings.ReplaceAll(text, " ", ""))
+	reverseText = strings.ToLower(strings.ReplaceAll(reverseText, " ", ""))
+
+	fmt.Printf("Text: %s\n", text)
+	fmt.Printf("Reverse: %s\n", reverseText)
+
+	if text == reverseText {
+		fmt.Printf("The text is a palindrom!\n")
+	} else {
+		fmt.Printf("The text is not a palindrom!\n")
+	}
 }
 
 func DataTypes() {
+
 	var stop bool = false
 	var menuChoice int32
 	var accountName string
