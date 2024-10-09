@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -27,6 +28,7 @@ func main() {
 	router.GET("/", start)
 	router.GET("/about", about)
 	router.GET("/api/me", mySelf)
+	router.GET("/api/me3/:id", anotherMe)
 	router.Run(":45000")
 }
 
@@ -41,4 +43,10 @@ func about(c *gin.Context) {
 
 func mySelf(c *gin.Context) {
 	c.JSON(http.StatusOK, &MySelf{Name: "MySelf", Age: 13, Birthday: "1950-05-05", City: "Nowhere"})
+}
+
+func anotherMe(c *gin.Context) {
+	id := c.Param("id")
+	fmt.Println(id)
+	c.JSON(http.StatusOK, &MySelf{Name: "NotMySelf", Age: 67, Birthday: "1930-05-05", City: "Somewhere"})
 }
