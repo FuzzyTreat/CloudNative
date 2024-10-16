@@ -14,7 +14,7 @@ type PageView struct {
 
 func handleAbout(c *gin.Context) {
 
-	c.HTML(http.StatusOK, "about.html", &PageView{Title: "test", Rubrik: data.GetEmployee(1).Namn})
+	c.HTML(http.StatusOK, "about.html", &PageView{Title: "testint testing", Rubrik: data.GetEmployee(1).Namn})
 }
 
 func handleStart(c *gin.Context) {
