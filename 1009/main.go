@@ -21,8 +21,22 @@ func handleStart(c *gin.Context) {
 	c.Data(http.StatusOK, "text/html; charset=utf-8", []byte("<html><body>Hello</body></html>"))
 }
 
+var config Config
+
+func Readconfig(config *Config) {
+
+}
+
 func main() {
-	data.Init()
+	Readconfig(&config)
+	//	readConfig(&config)
+
+	data.Init(config.Database.File,
+		config.Database.Server,
+		config.Database.Database,
+		config.Database.Username,
+		config.Database.Password,
+		config.Database.Port)
 
 	r := gin.Default()
 	r.LoadHTMLGlob("templates/**")
