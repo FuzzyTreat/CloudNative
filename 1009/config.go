@@ -30,14 +30,10 @@ type Config struct {
 	} `yaml:"sso"`
 }
 
-func readConfig(cfg *Config) {
-	readFile(cfg)
-	readEnv(cfg)
-	fmt.Printf("%+v", cfg)
-}
-
-func readFile(cfg *Config) {
+// func readFile(cfg *Config) {
+func (cfg Config) readFile() {
 	fileName := "config.yml"
+
 	s := os.Getenv("RUNENVIRONMENT")
 	if len(s) > 0 {
 		fileName = "config" + s + ".yml"
@@ -49,29 +45,14 @@ func readFile(cfg *Config) {
 	decoder.Decode(cfg)
 }
 
-func readEnv(cfg *Config) {
+// func readEnv(cfg *Config) {
+func (cfg Config) readEnv() {
 	envconfig.Process("", cfg)
 }
 
-// func (config Config) readConfig(cfg *Config) {
-// 	readFile(cfg)
-// 	readEnv(cfg)
-// 	fmt.Printf("%+v", cfg)
-// }
-
-// func (config Config) readFile(cfg *Config) {
-// 	fileName := "config.yml"
-// 	s := os.Getenv("RUNENVIRONMENT")
-// 	if len(s) > 0 {
-// 		fileName = "config" + s + ".yml"
-// 	}
-
-// 	f, _ := os.Open(fileName)
-// 	defer f.Close()
-// 	decoder := yaml.NewDecoder(f)
-// 	decoder.Decode(cfg)
-// }
-
-// func (config Config) readEnv(cfg *Config) {
-// 	envconfig.Process("", cfg)
-// }
+// func readConfig(cfg *Config)
+func (cfg Config) readConfig() {
+	cfg.readFile()
+	cfg.readEnv()
+	fmt.Printf("%+v", cfg)
+}

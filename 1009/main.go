@@ -14,7 +14,7 @@ type PageView struct {
 
 func handleAbout(c *gin.Context) {
 
-	c.HTML(http.StatusOK, "about.html", &PageView{Title: "testint testing", Rubrik: data.GetEmployee(1).Namn})
+	c.HTML(http.StatusOK, "about.html", &PageView{Title: "testing testing", Rubrik: data.GetEmployee(1).Namn})
 }
 
 func handleStart(c *gin.Context) {
@@ -23,13 +23,13 @@ func handleStart(c *gin.Context) {
 
 var config Config
 
-func Readconfig(config *Config) {
+// func Readconfig(config *Config) {
 
-}
+// }
 
 func main() {
-	Readconfig(&config)
-	//	readConfig(&config)
+	// Readconfig(&config)
+	config.readConfig()
 
 	data.Init(config.Database.File,
 		config.Database.Server,
