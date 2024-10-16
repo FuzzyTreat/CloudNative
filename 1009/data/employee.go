@@ -11,8 +11,8 @@ import (
 // POGO
 
 type Employee struct {
-	Id   int
-	Age  int
+	Id   int    `json:"id"`
+	Age  int    `json:"age"`
 	City string `json:"city"`
 	Namn string `json:"name"`
 }
