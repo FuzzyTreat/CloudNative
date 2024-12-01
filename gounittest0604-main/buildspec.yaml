@@ -14,14 +14,14 @@ version: 0.2
 #   secrets-manager:
 #     key: secret-id:json-key:version-stage:version-id
 #   git-credential-helper: no | yes
-env:
-  parameter-store:
-    DOCKER_USERNAME: "DOCKER_USERNAME2"
-    DOCKER_PASSWORD: "DOCKER_PASSWORD"
+# env:
+#   parameter-store:
+#     DOCKER_USERNAME: "DOCKER_USERNAME2"
+#     DOCKER_PASSWORD: "DOCKER_PASSWORD"
         
-phases:
-  build:
-    commands:
-      - docker build -t git.systementor.se/yacloud/stefan241118 .
-      - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  https://git.systementor.se
-      - docker push git.systementor.se/yacloud/stefan241118
+# phases:
+#   build:
+#     commands:
+#       - docker build -t git.systementor.se/yacloud/stefan241118 .
+#       - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  https://git.systementor.se
+#       - docker push git.systementor.se/yacloud/stefan241118
