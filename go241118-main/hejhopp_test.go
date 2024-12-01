@@ -12,6 +12,9 @@ package main
 
 // filnamn måste sluta med _test.go
 
+// kör i CLI: go test -bench . -benchmem
+// go build -gcflags "-m -l" -> visar allokeringar
+
 import (
 	"fmt"
 	"strings"

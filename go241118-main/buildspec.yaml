@@ -16,8 +16,8 @@ version: 0.2
 #   git-credential-helper: no | yes
 env:
   parameter-store:
-    DOCKER_USERNAME: "DOCKER_USERNAME" # AWS Environment variable
-    DOCKER_PASSWORD: "DOCKER_PASSWORD" # AWS Environment variable
+    DOCKER_USERNAME: "DOCKER_USERNAME" # AWS Environment variable, per-erik.toyra
+    DOCKER_PASSWORD: "DOCKER_PASSWORD" # AWS Environment variable, yacloud1
         
 phases:
   build:
