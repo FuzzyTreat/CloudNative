@@ -20,6 +20,6 @@ phases:
   build:
     commands:
       - go test
-      - docker build -t git.systementor.se/yacloud/yagolangapi .
-      - docker login -u yacloud -p yacloud1 https://git.systementor.se
-      - docker push git.systementor.se/yacloud/yagolangapi 
+      - docker build -t git.systementor.se/per-erik.toyra/yagoapi .
+      - docker login -u per-erik.toyra -p yacloud1 https://git.systementor.se
+      - docker push git.systementor.se/per-erik.toyra/yagoapi
