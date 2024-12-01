@@ -13,6 +13,7 @@ COPY *.go ./
 COPY data/*.go ./data/
 COPY templates/* ./templates/
 
+RUN go test
 RUN go build -o /applikationen
 RUN mkdir -p /database
 
@@ -20,3 +21,5 @@ RUN mkdir -p /database
 EXPOSE 8080
 
 CMD [ "/applikationen" ]
+
+# see cowsay for a smaller, more efficient docker build
