@@ -29,7 +29,6 @@ func calculateBeer(c *gin.Context) {
 	} else {
 		c.JSON(http.StatusOK, gin.H{"canBuy": canBuy})
 	}
-
 }
 
 func start(c *gin.Context) {
