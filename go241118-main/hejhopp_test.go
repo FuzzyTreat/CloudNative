@@ -10,6 +10,8 @@ package main
 
 // StringBuilder vs += osv osv för strängar
 
+// filnamn måste sluta med _test.go
+
 import (
 	"fmt"
 	"strings"
