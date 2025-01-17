@@ -3,7 +3,6 @@ package main
 import (
 	"goweb01/data"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 )
@@ -20,7 +19,7 @@ func main() {
 
 	router := gin.Default()
 
-	// router.LoadHTMLGlob("templates/**") // where are the html templates located
+	router.LoadHTMLGlob("templates/**") // where are the html templates located
 	router.GET("/", start)
 	router.GET("/about", about)
 
@@ -40,31 +39,6 @@ func about(c *gin.Context) {
 	c.String(200, "<b>About this!</b>")
 }
 
-// request, response
-func handleGetAllEmployees(c *gin.Context) {
-	emps := data.GetAllEmployees()
-	c.IndentedJSON(http.StatusOK, emps)
-}
-
-func handleGetOneEmployee(c *gin.Context) {
-	id := c.Param("id") // "a"
-	numId, _ := strconv.Atoi(id)
-	employee := data.GetEmployee(numId)
-
-	if employee == nil { // INTE HITTAT  /api/employee/
-		c.IndentedJSON(http.StatusNotFound, gin.H{"error": "Finns inte"})
-	} else {
-		c.IndentedJSON(http.StatusOK, employee)
-	}
-}
-
-func handleNewEmployees(c *gin.Context) {
-	// TODO Add new
-	// försöka få fram den JSON Employee som man skickat in
-	var employee data.Employee
-	if err := c.BindJSON(&employee); err != nil {
-		return
-	}
-	data.CreateNewEmployee(employee)
-	c.IndentedJSON(http.StatusCreated, employee)
+func mySelf(c *gin.Context) {
+	c.JSON(http.StatusOK, &MySelf{Name: "MySelf", Age: 13, Birthday: "1950-05-05", City: "Nowhere"})
 }
