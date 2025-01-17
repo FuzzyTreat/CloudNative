@@ -14,6 +14,13 @@ type PageView struct {
 	Text        string
 }
 
+type MySelf struct {
+	Name     string
+	Age      int16
+	Birthday string
+	City     string
+}
+
 func main() {
 	data.Init()
 
@@ -23,10 +30,7 @@ func main() {
 	router.GET("/", start)
 	router.GET("/about", about)
 
-	router.GET("/api/employee", handleGetAllEmployees)
-	router.GET("/api/employee/:id", handleGetOneEmployee)
-	router.POST("/api/employee", handleNewEmployees) // SKA JU Employee skickas med som JSON
-
+	router.GET("/api/me", mySelf)
 	router.Run(":45000")
 }
 
